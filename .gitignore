@@ -1,0 +1,4 @@
+src/config/__pycache__/
+src/db.sqlite3
+src/pages/__pycache__/
+src/pages/migrations/__pycache__/
