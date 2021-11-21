@@ -2,11 +2,11 @@
 
 ## 0. Environment
 
-This project is a copy of part3-18.csrf-exercise, with a bunch of additional (bad) features just to create a bunch of problems in the codebase. I was planning to do both injection and XSS but in the 2021-OWASP they're under the same "topic" so I only did the injection part. Which makes using the CSRF-exercise a bit moot.
+This project is a copy of part3-18.csrf-exercise, with a bunch of additional (bad) features just to create a bunch of problems in the codebase. I was planning to do both injection and XSS but in the 2021-OWASP they're under the same "topic" so I only did the injection part. However, I figured I could use these CSRF exempts as an example of securit misconfiguration.
 
 If you have the environment set up for the Cyber Security Base 2021, you should be able to just clone this repo and `python3 manage.py runserver` in the root directory. Details for setting up the environment in https://cybersecuritybase.mooc.fi/installation-guide
 
-You probably need to run migrations before your first run: `python3 manage.py migrate`, but the runserver should complain about it too.
+You probably need to run migrations before your first run: `python3 manage.py migrate`, but the runserver should complain about it if you do need to run it.
 
 ## 1. SQL injection (A03:2021-Injection)
 
