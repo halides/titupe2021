@@ -43,6 +43,8 @@ In addition to not handling the secret data properly, here we also log it improp
 
 This is something that I think there are no automatic tools that really can handle this, as I think we don't have a systemic way of tagging data as "sensitive" in a way that would automatically warn the developer that you're doing something stupid (like logging) with a piece of data that you should be super careful with. This is a similar (or even the same) problem that was discussed in the Threat Analysis portion regards "Data Lifetime is a System Problem". I discuss a mitigation for this in 5., below.
 
+To fix this problem, don't log like this, or if you do, delete this kind of logging.
+
 ## 4. Liberal use of csrf-exempt (A05:2021 – Security Misconfiguration)
 
 https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/views.py#L14
