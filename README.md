@@ -25,3 +25,4 @@ you'll bypass many layers of injection protection and will delete the user with 
 
 ## 3. Logging secret data (A09:2021-Security Logging and Monitoring Failures)
 
+## 4. Liberal use of csrf-exempt (A05:2021 – Security Misconfiguration)
