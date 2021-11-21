@@ -1,6 +1,6 @@
 # titupe2021
 
-1. SQL injection (A03:2021-Injection)
+## 1. SQL injection (A03:2021-Injection)
 
 https://github.com/halides/titupe2021/blob/a47b63d38dee6cae4651faaa6c28945c4debdc73/src/pages/views.py#L35
 
