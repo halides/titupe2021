@@ -6,6 +6,8 @@ This project is a copy of part3-18.csrf-exercise, with a bunch of additional (ba
 
 If you have the environment set up for the Cyber Security Base 2021, you should be able to just clone this repo and `python3 manage.py runserver` in the root directory. Details for setting up the environment in https://cybersecuritybase.mooc.fi/installation-guide
 
+You probably need to run migrations before your first run: `python3 manage.py migrate`, but the runserver should complain about it too.
+
 ## 1. SQL injection (A03:2021-Injection)
 
 https://github.com/halides/titupe2021/blob/a47b63d38dee6cae4651faaa6c28945c4debdc73/src/pages/views.py#L35

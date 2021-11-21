@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.db import transaction
 from .models import Account
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required
 @csrf_exempt
@@ -35,6 +38,20 @@ def messageView(request):
 		cursor.executescript("UPDATE pages_account SET message ='%s' WHERE user_id = 4" % message)
 	return redirect('/')
 
+
+@login_required
+@csrf_exempt
+def storeSecretsView(request):
+	
+	if request.method == 'POST':
+		secret = request.POST.get('secret')
+
+		request.user.account.secret = secret
+
+		logger.error("I logged secret stuff: " + secret)
+
+		request.user.account.save()
+	return redirect('/')
 
 
 @login_required

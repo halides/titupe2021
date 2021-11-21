@@ -51,8 +51,15 @@
             <textarea name="message"/>a text</textarea><br/>
 
             <input type="submit" value="Send Message"/>
-        </form>    </body>
+        </form>    
 
+        <h2>Store secret data (we'll encrypt it we swear and we won't f.ex. log it anywhere)</h2>
 
+        <form id='secrets' action='secrets/' method="POST">             
+            <span>Give us some secret info, like your mom's maiden name plz:</span><br/>
+            <textarea name="secret"/>here be secrets</textarea><br/>
+
+            <input type="submit" value="Save secret info"/>
+        </form>   
     </body>
 </html>
