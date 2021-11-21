@@ -1,5 +1,11 @@
 # titupe2021
 
+## 0. Environment
+
+This project is a copy of part3-18.csrf-exercise, with a bunch of additional (bad) features just to create a bunch of problems in the codebase. I was planning to do both injection and XSS but in the 2021-OWASP they're under the same "topic" so I only did the injection part. Which makes using the CSRF-exercise a bit moot.
+
+If you have the environment set up for the Cyber Security Base 2021, you should be able to just clone this repo and `python3 manage.py runserver` in the root directory. Details for setting up the environment in https://cybersecuritybase.mooc.fi/installation-guide
+
 ## 1. SQL injection (A03:2021-Injection)
 
 https://github.com/halides/titupe2021/blob/a47b63d38dee6cae4651faaa6c28945c4debdc73/src/pages/views.py#L35
