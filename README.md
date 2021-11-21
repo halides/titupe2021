@@ -23,7 +23,7 @@ you'll bypass many layers of injection protection and will delete the user with 
 
 ## 2. Handling and storing secret data improperly (A02:2021 – Cryptographic Failures)
 
-We promise to the user that we'll handle secret data properly. This data could be your credit-card number, your  We break this promise at least in two places, first in the frontend:
+We promise to the user that we'll handle secret data properly. This data could be your credit-card number, your social-security number, your mom's maiden name or anything. Here we just use an abstraction however. We break this promise at least in two places, first in the frontend:
 
 https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/templates/pages/index.html#L62
 
