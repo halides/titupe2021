@@ -13,6 +13,8 @@
 		<th style="text-align:left">Username: <td>{{user.username}} 
 		<tr>
 		<th style="text-align:left">Balance:  <td>{{user.account.balance}}
+		<tr>
+		<th style="text-align:left">Message:  <td>{{user.account.message}}
 		</table>
 
 
@@ -31,11 +33,25 @@
             </select><br/>
 
             <span>Amount:</span><br/>
-            <input type="number" name="amount"/><br/>
+            <input type="text" name="amount"/><br/>
 
             <input type="submit" value="Transfer"/>
         </form>
-    </body>
+
+        <h2>Send message</h2>
+
+        <form id='message' action='message/' method="POST">             <span>To:</span><br/>
+            <select name="to">
+			{% for account in accounts %}
+                <option value="{{account.user.username}}">{{account.user.username}}</option>
+			{% endfor %}
+            </select><br/>
+
+            <span>Message:</span><br/>
+            <textarea name="message"/>a text</textarea><br/>
+
+            <input type="submit" value="Send Message"/>
+        </form>    </body>
 
 
     </body>

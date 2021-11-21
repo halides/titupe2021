@@ -14,7 +14,25 @@ def transferView(request):
 	if request.method == 'GET':
 		to = User.objects.get(username=request.GET.get('to'))
 		amount = int(request.GET.get('amount'))
+		request.user.account.balance -= amount
+		to.account.balance += amount
+
+		request.user.account.save()
+		to.account.save()
 	
+	return redirect('/')
+
+
+@login_required
+@csrf_exempt
+def messageView(request):
+	
+	if request.method == 'POST':
+		from django.db import connection, transaction
+		cursor = connection.cursor()
+		message = request.POST.get('message')
+
+		cursor.executescript("UPDATE pages_account SET message ='%s' WHERE user_id = 4" % message)
 	return redirect('/')
 
 
