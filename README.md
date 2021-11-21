@@ -21,10 +21,32 @@ you'll bypass many layers of injection protection and will delete the user with 
 2. Instead of using the ("string '%s'" % message) syntax, you could use ("string '%s'", [message]) which seems to make sure the message is escaped correctly and no injection should happen.
 3. Instead of writing raw SQL like I do here, use the ORM-engine of Django, where you could just say something much simpler like "to.account.message = message", like is being done in the transfewVies method above.
 
-## 2. Storing secret data improperly (A02:2021 – Cryptographic Failures)
+## 2. Handling and storing secret data improperly (A02:2021 – Cryptographic Failures)
+
+We promise to the user that we'll handle secret data properly. This data could be your credit-card number, your  We break this promise at least in two places, first in the frontend:
+
+https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/templates/pages/index.html#L62
+
+and then in the backend:
+
+https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/views.py#L49
+
+The front-end is not a secured site (HTTPS), thus this secret data is moved through a network unencrypted, and thus this data could be stolen by any listener between the client and server. In the back-end the data is stored in plaintext, which is not a good idea for sensitive data. Anyone having direct read-access to the database could steal this information, even though the front-end and the back-end might be secure.
 
 ## 3. Logging secret data (A09:2021-Security Logging and Monitoring Failures)
 
+https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/views.py#L51
+
+In addition to not handling the secret data properly, here we also log it improperly. Even though we could handle the front-end properly (use a secure connection over the network) and crypt the data when we store it to the database, logging like this can still expose sensitive data in places where it should not be exposed. Logging like this could be used for example in debugging, and when doing work like that it is important to remove logging like this.
+
 ## 4. Liberal use of csrf-exempt (A05:2021 – Security Misconfiguration)
 
-## 5. Not using common industry standard practices (A04:2021 – Insecure Design)
+https://github.com/halides/titupe2021/blob/7cd15bb828382de098db3c5415a6165e31731539/src/pages/views.py#L14
+
+I feel like this is a pretty contrived example, but I actually had a hard time in doing the part3.18-csrf-exercise as I didn't notice the @csrf_exempt decorator at first and had problems getting the exercise done properly for a long time :-)
+
+Django has automatic middleware for protecting again CSRF, and you can disable with the mentioned exempt-decorator. The exemption could once again be used for example when debugging the system ("this isn't working, is it because of csrf?" -> disable), and it might be easy to forget to turn it back on.
+
+## 5. Not using common industry standard best practices (A04:2021 – Insecure Design)
+
+Both of these previous examples mentioned debugging and forgetting to turn security features back on. 
